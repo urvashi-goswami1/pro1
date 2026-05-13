@@ -918,3 +918,303 @@ resource "aws_db_instance" "mydb" {
 		Name = "MyRDS"
 	}
 }
+
+_______________________________________________________________________________________________________________________________________
+	gitHUB
+	__________________________________________________________________________________________________________________________________
+	Git Related Sample for Practical exam:  
+Tracking Files Lifecycle 
+• Create a file (app.txt) 
+• Check repository status 
+• Stage file using git add 
+• Commit changes using git commit 
+• Modify file and view differences using git diff 
+• Commit updated changes 
+Create dev branch, Switch branches, Make changes 
+in dev, Switch back to main, Compare branches. 
+	
+git init 
+echo "Hello Git" > app.txt 
+git status 
+git add app.txt 
+git commit -m "Initial commit" 
+Modify & Check Changes: 
+	
+echo "New line" >> app.txt 
+git diff 
+git add app.txt 
+git commit -m "Updated file" 
+Branch Operations: 
+git branch dev 
+git checkout dev 
+# make changes 
+git checkout main 
+git diff main dev ------------------------------------------------------------------------------------------------------------ 
+	
+Branching and Isolation 
+• Create a dev branch using git branch 
+• Switch branches using git checkout 
+• Make changes in dev branch 
+• Switch back to main branch 
+• Compare branchesOutcome: Student understands branch isolation and parallel development.
+	
+git branch dev 
+git checkout dev 
+# make changes 
+git checkout main 
+git diff dev 
+Delete Branch: 
+git branch -d dev 
+Delete Remote Branch: 
+git push origin --delete dev 
+Outcome: Learn parallel development and isolation. ------------------------------------------------------------------------------------------------------------- 
+	
+Merging and Conflict Handling 
+• Merge dev branch into main using git merge 
+• Perform fast-forward merge 
+• Create conflicting changes in two branches 
+• Resolve merge conflicts manually 
+• Commit resolved changes 
+Merge: 
+	
+git checkout main 
+git merge dev 
+Fast-forward Merge: 
+• Happens automatically if no divergence.  
+Conflict Simulation: 
+• Edit same file in both branches  
+Resolve Conflict: 
+# manually edit file 
+	
+git add file.txt 
+git commit -m "Resolved conflict" 
+	
+Outcome: Handle merge conflicts. ------------------------------------------------------------------------------------------------------------- 
+Working with Remote Repositories 
+• Understand local vs remote repositories 
+• Configure remote using git remote add 
+• Clone repository using git clone 
+• Fetch updates using git fetch 
+• Pull changes using git pull 
+• Push changes using git push 
+Outcome: Student can synchronize local and remote repositories. 
+	
+Setup Remote: 
+git remote add origin <repo-url> 
+Clone: 
+git clone <repo-url> 
+Sync Commands: 
+git fetch 
+git pull 
+git push origin main 
+	
+Outcome: Sync local & remote repositories. --------------------------------------------------------------------------------------------------------------- 
+GitHub Collaboration Workflow 
+• Create repository on GitHub 
+• Push local code to remote 
+• Clone repository to another directory 
+• Create a feature branch and push it 
+• Create pull request and review changes 
+• Merge pull request 
+	
+git push origin main 
+git clone <repo-url> new-folder 
+git checkout -b feature-branch 
+git push origin feature-branch 
+Then: 
+• Create Pull Request (PR) on GitHub  
+• Review & Merge PR ----------------------------------------------------------------------------------------------------------------- 
+Undoing Changes & Recovery 
+	
+• Undo unstaged changes using git checkout 
+• Unstage files using git reset 
+• Amend commits using git commit --amend 
+• Use git reset (soft, mixed, hard) 
+• Use git revert for safe undo 
+• Recover commits using git reflogOutcome: Student can safely undo and recover changes. 
+Undo Unstaged Changes: 
+	
+git checkout -- file.txt 
+Unstage File: 
+git reset file.txt 
+	
+Amend Commit: 
+git commit --amend 
+	
+Reset Types: 
+git reset --soft HEAD~1 
+git reset --mixed HEAD~1 
+git reset --hard HEAD~1 
+	
+Safe Undo: 
+git revert <commit-id> 
+Recover Lost Commits: 
+git reflog 
+Outcome: Safely undo and recover work. 
+-------------------------------------------------------------------------------------------------------------------- 
+· Merge dev branch into main, perform fast-forward merge, create conflicting changes, Resolve 
+conflicts, Commit resolved changes. 
+· Create feature branch, Make incremental commits, Push branch to remote, Update branch with 
+latest develop changes, Merge back to develop 
+	
+git checkout -b feature 
+# make commits 
+git push origin feature 
+git pull origin develop 
+git checkout develop 
+git merge feature
+	-------------------------------------------------------------------------------------------------------------------- 
+·   Local vs remote repositories, configure remote, Clone repository, Fetch updates, Pull changes, 
+Push changes. 
+·   Identify commit to rollback, Reset local branch to previous commit, Discard unwanted changes, 
+Revert commits for shared branch, Verify rollback, Use git reset, git revert 
+	
+Add Remote: 
+git remote add origin https://github.com/user/repo.git 
+	
+Verify Remote: 
+git remote -v 
+3. Clone Repository 
+	
+• Used to copy remote repo to local system.  
+git clone https://github.com/user/repo.git 
+Creates a full working project on your machine. 
+	
+4. Fetch Updates 
+• Downloads changes from remote but does NOT merge.  
+git fetch origin 
+Safe way to check updates before applying. 
+5. Pull Changes 
+• Fetch + Merge together.  
+git pull origin main 
+Updates your local branch with remote changes. 
+6. Push Changes 
+• Upload local commits to remote.  
+git push origin main 
+Sends your work to GitHub. 
+Undoing Changes & Recovery 
+7. Identify Commit to Rollback 
+git log 
+• Shows commit history with IDs.
+	
+8. Reset Local Branch 
+	
+Soft Reset (keep changes staged): 
+git reset --soft HEAD~1 
+	
+Mixed Reset (keep changes unstaged): 
+git reset --mixed HEAD~1 
+	
+Hard Reset (delete changes completely): 
+git reset --hard HEAD~1 
+	
+9. Discard Unwanted Changes 
+git checkout -- file.txt 
+Restores file to last committed state. 
+10. Revert Commit (Safe for Shared Branch) 
+	
+git revert <commit-id> 
+• Creates a new commit that undoes previous changes  
+• Safe when working withteam  
+11. Verify Rollback 
+	
+git status 
+git log 
+git log 
+git reset --hard <commit-id> 
+git revert <commit-id> 
+git status
+	----------------------------------------------------------------------------------------------------------------- 
+Git Hooks for Automation 
+• Understand client-side hooks 
+• Create pre-commit hook to run lint checks 
+• Create pre-push hook to run tests 
+• Automate validation before commits 
+• Explore post-merge hook usage 
+	
+Hooks location : 
+.git/hooks/ 
+	
+Pre-commit Hook Example: 
+#!/bin/sh 
+echo "Running checks..." 
+	
+1. Git Hooks (Client-Side Automation) 
+• Git Hooks are scripts that run automatically at certain points in Git workflow.  
+• Stored inside:  
+	
+.git/hooks/ 
+Types (Client-side hooks) 
+• pre-commit → Runs before commit  
+• pre-push → Runs before pushing code  
+• post-merge → Runs after merge  
+	
+2. Pre-Commit Hook (Lint Check) 
+Used to check code quality before commit. 
+Steps: 
+
+	
+1. Go to hooks folder:  
+cd .git/hooks 
+	
+2. Create file:  
+touch pre-commit 
+	
+3. Add script:  
+#!/bin/sh 
+echo "Running lint check..." 
+	
+# Example: check if file contains 'error' 
+	
+if grep -q "error" *.txt; then 
+echo "Error found! Commit rejected." 
+exit 1 
+fi 
+	
+4. Make executable:  
+chmod +x pre-commit 
+Now commit will stop if "error" is found. 
+	
+3. Pre-Push Hook (Run Tests) 
+Runs before pushing code to remote. 
+#!/bin/sh 
+echo "Running tests before push..." 
+# Example condition 
+if [ -f fail.txt ]; then 
+echo "Tests failed! Push rejected." 
+exit 1 
+fi 
+Prevents pushing bad code.
+	
+4. Post-Merge Hook 
+Runs after merging branches. 
+#!/bin/sh 
+echo "Merge completed successfully!" 
+Can be used to: 
+	
+• Install dependencies  
+• Restart server  
+• Notify users  
+5. Automation Purpose 
+• Prevent bad commits  
+• Ensure code quality  
+• Automate testing  
+• Save developer time 
+	--------------------------------------------------------------------------------------------------------- 
+Initialize and Track Files 
+Initialize a Git repo, Create a file, Check status, Stage file, Commit changes, Modify file, View 
+difference, Commit again. 
+	
+git init 
+touch file.txt 
+git status 
+git add file.txt 
+git commit -m "First commit" 
+echo "update" >> file.txt 
+git diff 
+git commit -am "Updated"
+	---------------------------------------------------------------------------------------------------------------- 
+Branching and Isolation 
+· Create dev branch, Switch branches, make changes in dev, Switch back to main, Compare branches 
+· Delete local branch, Delete remote branch, Remove merged branches, Clean unused branches, 
+Verify branch list 
